@@ -1,1 +1,1 @@
-Basic n-layered api
+Basic anime list api using layered architecture

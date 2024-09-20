@@ -4,11 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const animeRoutes_1 = __importDefault(require("./routes/animeRoutes"));
 const app = (0, express_1.default)();
-const port = 3000;
-app.get('/api/hello', (req, res) => {
-    res.send('Hello World from TypeScript!');
-});
-app.listen(port, () => {
-    console.log(`Server is running at <http://localhost>:${port}`);
-});
+app.use(express_1.default.json());
+app.use('/api/anime', animeRoutes_1.default);
+exports.default = app;

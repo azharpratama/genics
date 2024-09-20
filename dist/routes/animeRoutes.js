@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const AnimeController_1 = require("../controllers/AnimeController");
+const router = (0, express_1.Router)();
+const animeController = new AnimeController_1.AnimeController;
+router.get('/', (req, res) => animeController.getAnimeList(req, res));
+router.get('/:id', (req, res) => animeController.getAnimeById(req, res));
+router.post('/', (req, res) => animeController.addAnime(req, res));
+exports.default = router;
