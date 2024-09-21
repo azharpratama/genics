@@ -13,7 +13,7 @@ exports.AnimeController = void 0;
 const AnimeService_1 = require("../services/AnimeService");
 class AnimeController {
     constructor() {
-        this.animeService = new AnimeService_1.AnimeService;
+        this.animeService = new AnimeService_1.AnimeService();
     }
     getAnimeList(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -22,12 +22,7 @@ class AnimeController {
                 res.status(200).json(animeList);
             }
             catch (error) {
-                if (error instanceof Error) {
-                    res.status(500).json({ message: error.message });
-                }
-                else {
-                    res.status(500).json({ message: 'Unknown error occured' });
-                }
+                res.status(500).json({ message: error.message });
             }
         });
     }
@@ -44,12 +39,7 @@ class AnimeController {
                 }
             }
             catch (error) {
-                if (error instanceof Error) {
-                    res.status(500).json({ message: error.message });
-                }
-                else {
-                    res.status(500).json({ message: 'Unknown error occured' });
-                }
+                res.status(500).json({ message: error.message });
             }
         });
     }
@@ -67,12 +57,7 @@ class AnimeController {
                 res.status(201).json(newAnime);
             }
             catch (error) {
-                if (error instanceof Error) {
-                    res.status(500).json({ message: error.message });
-                }
-                else {
-                    res.status(500).json({ message: 'Unknown error occured' });
-                }
+                res.status(500).json({ message: error.message });
             }
         });
     }

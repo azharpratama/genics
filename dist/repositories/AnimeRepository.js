@@ -10,34 +10,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnimeRepository = void 0;
+const client_1 = require("@prisma/client");
+const prisma = new client_1.PrismaClient();
 class AnimeRepository {
-    constructor() {
-        this.animeList = [
-            {
-                id: '1', title: 'One Piece', genre: 'Adventure', episodes: 1120,
-                synopsis: 'Pirates seeking adventure'
-            },
-            {
-                id: '2', title: 'Steins;Gate', genre: 'Sci-Fi', episodes: 24,
-                synopsis: 'Fun story about time travel'
-            }
-        ];
-    }
     getAnimeList() {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.animeList;
+            return prisma.anime.findMany();
         });
     }
     getAnimeById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const anime = this.animeList.find(a => a.id === id);
-            return anime ? anime : null;
+            return prisma.anime.findUnique({
+                where: { id },
+            });
         });
     }
     addAnime(anime) {
         return __awaiter(this, void 0, void 0, function* () {
-            this.animeList.push(anime);
-            return anime;
+            return prisma.anime.create({
+                data: Object.assign({}, anime),
+            });
         });
     }
 }

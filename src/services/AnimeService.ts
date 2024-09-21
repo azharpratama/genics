@@ -8,15 +8,15 @@ export class AnimeService {
     this.animeRepository = new AnimeRepository();
   }
 
-  public async getAnimeList(): Promise<Anime[]> {
+  public async getAnimeList() {
     return this.animeRepository.getAnimeList();
   }
 
-  public async getAnimeById(id: string): Promise<Anime | null> {
+  public async getAnimeById(id: string) {
     return this.animeRepository.getAnimeById(id);
   }
 
-  public async addAnime(anime: Anime): Promise<Anime> {
+  public async addAnime(anime: Anime) {
     return this.animeRepository.addAnime(anime);
   }
 }
